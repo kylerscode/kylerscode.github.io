@@ -9,6 +9,10 @@
     console.log(xmlHttp.responseText);
     return xmlHttp.responseText;
 }
+    function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+    
 function tseriesViews() {
 return JSON.parse(httpGet("https://www.googleapis.com/youtube/v3/channels?id=UCq-Fj5jknLsUf-MWSy4_brA&key=AIzaSyDUUw71-FPItDiS3ZD_yBNOc9k_B5bx22E&part=statistics")).items[0].statistics.viewCount}
 
@@ -16,8 +20,8 @@ function pewdiepieViews() {
 return JSON.parse(httpGet("https://www.googleapis.com/youtube/v3/channels?id=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key=AIzaSyDUUw71-FPItDiS3ZD_yBNOc9k_B5bx22E&part=statistics")).items[0].statistics.viewCount}
     
     function sayHi() {
-document.getElementById("p").innerHTML = String(pewdiepieViews());
-  document.getElementById("t").innerHTML = String(tseriesViews());
+document.getElementById("p").innerHTML = numberWithCommas(String(pewdiepieViews()));
+document.getElementById("t").innerHTML = numberWithCommas(String(tseriesViews()));
 }
 
 setInterval(sayHi, 30000);
