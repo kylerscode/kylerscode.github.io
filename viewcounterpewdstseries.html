@@ -1,3 +1,6 @@
+
+<h2 id="t"></h2>
+<br><h2 id="p"></h2>
 <script>function httpGet(theUrl)
 {
     var xmlHttp = new XMLHttpRequest();
@@ -11,13 +14,12 @@ return JSON.parse(httpGet("https://www.googleapis.com/youtube/v3/channels?id=UCq
 
 function pewdiepieViews() {
 return JSON.parse(httpGet("https://www.googleapis.com/youtube/v3/channels?id=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key=AIzaSyDUUw71-FPItDiS3ZD_yBNOc9k_B5bx22E&part=statistics")).items[0].statistics.viewCount}
-
-setInterval(function() {
-  // method to be executed;
-  document.getElementById("p").innerHTML = String(pewdiepieViews());
+    
+    function sayHi() {
+document.getElementById("p").innerHTML = String(pewdiepieViews());
   document.getElementById("t").innerHTML = String(tseriesViews());
-}, 1000);
+}
+
+setTimeout(sayHi, 1000);
 </script>
 
-<h2 id="t"></h2>
-<br><h2 id="p"></h2>
